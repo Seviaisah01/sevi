@@ -1,0 +1,80 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+        .calculator {
+            background-color: rgba(49, 145, 209, 0.849);
+            border-radius: 15px;
+            margin: 50px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        button {
+            background-color: rgba(10, 122, 226, 0.753);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            font-size: 30px;
+            color: rgba(108, 122, 122, 0.877);
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button onclick="append('+')">+</button>
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button onclick="append('-')">-</button>
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button onclick="append('*')">*</button>
+        <button onclick="append('0')">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="append('/')">/</button>
+    </div>
+
+    <script>
+        var display = document.getElementById('display');
+
+        function append(text) {
+            display.value += text;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function calculate() {
+            try {
+                var result = eval(display.value);
+                display.value = result;
+            } catch (error) {
+                display.value = 'hasil';
+            }
+        }
+    </script>
+</body>
+</html>
